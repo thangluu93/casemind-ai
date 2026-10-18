@@ -1,0 +1,6 @@
+import type {Evidence, Report} from './api';
+import {readable} from './format-label';
+import {text} from './workspace-api';
+export function FindingCards({report,select}: {report?:Report;select:(e:Evidence)=>void}) {
+ return <section className="panel"><span className="eyebrow">DETERMINISTIC FACTS / HUMAN INTERPRETATION</span><h2>Finding cards</h2>{!report?<p className="empty">Run the investigation to collect source-supported findings. Source preview is available in the other tabs.</p>:<><p className="muted">Indicators warrant review; they do not establish criminality. Coverage gaps: {report.gaps.length}.</p><div className="finding-grid">{report.evidence.map(e=><article className="finding-card" key={e.id}><span className="eyebrow">{e.claim_kind} · {e.verification_status}</span><h3>{readable(e.tool)}</h3>{Object.entries(e.payload).filter(([k])=>!['text','fields'].includes(k)).slice(0,8).map(([k,v])=><div className="fact-line" key={k}><strong>{readable(k)}</strong><span>{text(v)}</span></div>)}<ul>{e.limitations.map((l,i)=><li key={i}>{l}</li>)}</ul><button onClick={()=>select(e)}>Inspect {e.refs.length} source references</button><details><summary>Raw evidence · tool version {e.tool_version}</summary><pre>{JSON.stringify(e,null,2)}</pre></details></article>)}</div></>}</section>;
+}

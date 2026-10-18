@@ -1,0 +1,14 @@
+.*
+!.gitignore
+!.dockerignore
+node_modules/
+dist/
+__pycache__/
+*.pyc
+*.egg-info/
+artifacts/
+evaluation-output/
+plans/**/browser-tests/
+plans/**/prior-browser-failures/
+frontend/test-results/
+!.gcloudignore

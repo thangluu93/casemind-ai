@@ -1,0 +1,10 @@
+.*
+node_modules
+**/node_modules
+**/__pycache__
+tests
+plans
+evaluation-output
+artifacts
+evaluation
+frontend/dist

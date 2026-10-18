@@ -1,0 +1,8 @@
+.*
+**/node_modules
+**/__pycache__
+frontend/dist
+tests
+evaluation
+evaluation-output
+artifacts
