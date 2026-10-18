@@ -9,7 +9,7 @@ Google Cloud. The [execution plan](../plans/261009-2203-casemind-prototype/plan.
 reuses the [prototype brief](prototype-brief.md), architecture and five scenarios.
 A FastAPI/ADK backend, deterministic analytics, seeded synthetic generator,
 React workspace, immutable reviews, cloud adapters and evaluation runner exist.
-The repository has not been published or submitted to the competition.
+The repository is public; competition submission is a separate step.
 
 Project `casemind-ai` (`251896792352`) has billing enabled. Dedicated Storage,
 BigQuery, Document AI, Artifact Registry and Cloud Run resources exist. Actual
@@ -39,8 +39,10 @@ control, typologies, a threshold what-if, change drivers with alternative checks
 Gemini challenge and RFI drafts, model-planned graph queries, replay, maker-checker
 review, a triage queue and a bilingual HTML export. See
 [workspace contracts](investigator-workspace.md#insights-advisories-and-second-review).
-The local tests and the offline browser suite pass. No live Gemini advisory call,
-deployment or cloud spending was performed for this expansion.
+The local tests and the offline browser suite pass. It is deployed as Cloud Run
+revision `casemind-ai-00010-q78` with live advisory checks; see the
+[deployment record](cloud-setup.md#deployment-record-2026-10-18). The public
+repository is https://github.com/thangluu93/casemind-ai.
 
 ## Confirmed constraints
 
@@ -66,6 +68,7 @@ only this project. Local SDK development uses CLI credentials in memory through
 Cloud Run uses the scoped `casemind-runtime` service identity.
 
 IBM archive/schema validation and OpenSanctions public-use licensing remain
-unresolved. Neither provider supplies the demo data. Public GitHub publication,
-English deck/video and portal submission remain separate delivery actions.
+unresolved. Neither provider supplies the demo data. The repository is public and
+an English deck and demo video were prepared on 2026-10-18; portal submission is
+the user's action.
 Check the current official portal for category, eligibility and exact deadline.

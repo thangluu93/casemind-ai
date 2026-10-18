@@ -34,6 +34,24 @@ protect concurrent writes; reviews are appended once per report version. Events
 survive restart; abandoned runs become interrupted, with an explicit new attempt.
 The local FileStore supports one process; production requires GCS.
 
+## Deployment record (2026-10-18)
+
+Revision `casemind-ai-00010-q78` serves 100% of traffic at the canonical URL. It
+contains the insights expansion and two fixes found during live verification:
+BigQuery loads for never-published snapshots now pass `num_retries=0` instead of an
+unsupported `retry` argument, and GCS writes retry HTTP 429 per-object rate limits
+under the same generation precondition. Failed investigations are now logged with
+their exception in Cloud Run logs; clients still see a sanitized status.
+
+Live checks on this revision: the embedded-instruction safety control completed an
+investigation with the instruction text withheld, and challenge, RFI and graph-query
+advisories returned validated results. The transfer-chain case and its advisories
+passed on revision `casemind-ai-00008-mkf` with the same advisory code.
+
+Rollback: the last verified revision before this expansion is `casemind-ai-00007-x64`;
+use the traffic command above with that name. The image tag `workspace:prototype` is
+mutable; revisions pin image digests, so roll back by revision name, not by tag.
+
 ## Cost controls and estimate
 
 The latest limit is gross service cost below **1,000,000 VND**, regardless of credits.
@@ -69,5 +87,4 @@ The locally implemented restricted sign-in settings and recovery/intake contract
 are listed in [investigator workspace](investigator-workspace.md). No GIS audience,
 subject allowlist or signing secret was configured or deployed by the October 11
 workspace session. Keep auth disabled until those settings are supplied through
-the authorized runtime route. Existing live resource names above describe the
-earlier prototype, not verification of the workspace extension.
+the authorized runtime route; maker-checker decisions require it.
